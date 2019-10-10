@@ -8,15 +8,7 @@ class GifListContainer extends Component {
     gifs: []
   }
 
-  render() {
-    return(
-      <div>
-        <GifSearch fetchGIFs={this.fetchGIFs} />
-        <GifList gifs={this.state.gifs} />
-      </div>
-    )
-  }
-
+  
   componentDidMount() {
     this.fetchGIFs()
   }
@@ -27,6 +19,15 @@ class GifListContainer extends Component {
       .then(({data}) => {
         this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }) ) })
       })
+  }
+
+  render() {
+    return(
+      <div>
+        <GifSearch fetchGIFs={this.fetchGIFs} />
+        <GifList gifs={this.state.gifs} />
+      </div>
+    )
   }
 
   
